@@ -11,7 +11,7 @@ import { selectCartItems } from '../../redux/cart/cart.selector';
 import { selectCartTotal } from '../../redux/cart/cart.selector';
 
 // Components
-import { CheckoutItem } from '../../components/checkout-item/checkout-item.component';
+import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 
 // Styles
 import './checkout.styles.scss';
