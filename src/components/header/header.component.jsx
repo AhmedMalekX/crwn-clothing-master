@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 
 // Components
 import CartIcon from '../cart-icon/cart-icon.component';
-import { CartDropdown } from '../cart-dropdown/cart-dropdown.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
 // Styles
 import './header.styles.scss';
