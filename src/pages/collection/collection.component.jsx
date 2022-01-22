@@ -26,8 +26,6 @@ const CollectionPage = ({ collection }) => {
     newItems.push(items[item]);
   }
 
-  console.log(newItems.map(item => console.log(item)));
-
   return (
     <div className='collection-page'>
       <h2 className='title'>{title}</h2>
@@ -39,8 +37,6 @@ const CollectionPage = ({ collection }) => {
     </div>
   );
 };
-
-console.log(collectionId);
 
 const mapStateToProps = state => {
   return {
