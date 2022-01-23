@@ -8,7 +8,11 @@ import { FormInput } from '../form-input/form-input.component';
 import { CustomButton } from '../custom-button/custom-button.component';
 
 // Styles
-import './sign-in.styles.scss';
+import {
+  SignInContainer,
+  SignInTitle,
+  ButtonsBarContainer,
+} from './sign-in.styles';
 
 export class SignIn extends React.Component {
   constructor(props) {
@@ -20,7 +24,7 @@ export class SignIn extends React.Component {
     };
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit = async e => {
     e.preventDefault();
 
     const { email, password } = this.state;
@@ -33,7 +37,7 @@ export class SignIn extends React.Component {
     }
   };
 
-  handleChange = (e) => {
+  handleChange = e => {
     const { value, name } = e.target;
 
     this.setState({ [name]: value });
@@ -41,8 +45,8 @@ export class SignIn extends React.Component {
 
   render() {
     return (
-      <div className='sign-in'>
-        <h2>I already have an account</h2>
+      <SignInContainer>
+        <SignInTitle>I already have an account</SignInTitle>
         <span>Sign in with your email and password</span>
 
         <form onSubmit={this.handleSubmit}>
@@ -64,14 +68,14 @@ export class SignIn extends React.Component {
             required
           />
 
-          <div className='buttons'>
+          <ButtonsBarContainer>
             <CustomButton type='submit'>Sing in</CustomButton>
             <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
               Sing in with Google
             </CustomButton>
-          </div>
+          </ButtonsBarContainer>
         </form>
-      </div>
+      </SignInContainer>
     );
   }
 }

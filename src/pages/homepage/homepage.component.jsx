@@ -3,11 +3,11 @@ import React from 'react';
 // Components
 import Directory from '../../components/directory/directory.component';
 
-// Styles
-import './homepage.styles.scss';
+// Styled Component
+import { HomePageContainer } from './homepage.styles';
 
 export const HomePage = () => (
-  <div className='homepage'>
+  <HomePageContainer>
     <Directory />
-  </div>
+  </HomePageContainer>
 );
