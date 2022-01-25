@@ -2,11 +2,7 @@ import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
 // Firebase
-import {
-  auth,
-  createUserProfileDocument,
-  addCollectionAndDocuments,
-} from './firebase/firebase.utils';
+import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 // Redux
 import { connect } from 'react-redux';
@@ -30,9 +26,6 @@ import CheckoutPage from './pages/checkout/checkout.component';
 // Styles
 import './App.css';
 
-// Shop selector
-import { selectCollectionsForPreview } from './redux/shop/shop.selector';
-
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
@@ -51,10 +44,6 @@ class App extends React.Component {
         });
       } else {
         setCurrentUser(userAuth);
-        addCollectionAndDocuments(
-          'collections',
-          collectionsArray.map(({ title, items }) => ({ title, items }))
-        );
       }
     });
   }
@@ -89,7 +78,6 @@ class App extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
-  collectionsArray: selectCollectionsForPreview,
 });
 
 const mapDispatchToProps = dispatch => ({
