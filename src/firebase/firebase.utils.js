@@ -1,15 +1,16 @@
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/firestore';
-import 'firebase/compat/auth';
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
+import "firebase/compat/auth";
 
 const config = {
-  apiKey: 'AIzaSyDyydkG87iKrg-m_jVxmVtDY9kY4q-WHmk',
-  authDomain: 'crwn-clothing-master-db.firebaseapp.com',
-  projectId: 'crwn-clothing-master-db',
-  storageBucket: 'crwn-clothing-master-db.appspot.com',
-  messagingSenderId: '120864175135',
-  appId: '1:120864175135:web:d880c75d80a666f1d1512a',
-  measurementId: 'G-G2Q9DEXB2X',
+  apiKey: "AIzaSyDyydkG87iKrg-m_jVxmVtDY9kY4q-WHmk",
+  authDomain: "crwn-clothing-master-db.firebaseapp.com",
+  databaseURL: "https://crwn-clothing-master-db-default-rtdb.firebaseio.com",
+  projectId: "crwn-clothing-master-db",
+  storageBucket: "crwn-clothing-master-db.appspot.com",
+  messagingSenderId: "120864175135",
+  appId: "1:120864175135:web:d880c75d80a666f1d1512a",
+  measurementId: "G-G2Q9DEXB2X",
 };
 
 // Store user obj in firestore when user signed in
@@ -31,7 +32,7 @@ export const createUserProfileDocument = async (userAuth, additonalData) => {
         ...additonalData,
       });
     } catch (error) {
-      console.error('Error creating user', error.message);
+      console.error("Error creating user", error.message);
     }
   }
 
@@ -46,7 +47,7 @@ export const addCollectionAndDocuments = async (
 
   const batch = firestore.batch();
 
-  objectsToAdd.forEach(obj => {
+  objectsToAdd.forEach((obj) => {
     const newDocRef = collectionRef.doc();
 
     batch.set(newDocRef, obj);
@@ -55,8 +56,8 @@ export const addCollectionAndDocuments = async (
   return await batch.commit();
 };
 
-export const convertCollectionSnapshotToMap = collections => {
-  const transformedCollection = collections.docs.map(doc => {
+export const convertCollectionSnapshotToMap = (collections) => {
+  const transformedCollection = collections.docs.map((doc) => {
     const { title, items } = doc.data();
     return {
       routeName: encodeURI(title.toLowerCase()),
@@ -79,7 +80,7 @@ export const firestore = firebase.firestore();
 
 // Setup google auth
 const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account' });
+provider.setCustomParameters({ prompt: "select_account" });
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;
